@@ -1,7 +1,5 @@
 package com.demyanenko.usermanager.dao;
 
-
-
 import com.demyanenko.usermanager.entities.User;
 
 import java.util.List;
@@ -12,4 +10,5 @@ public interface UserDao {
     void removeUser(int id);
     User getUserById(int id);
     List<User> listUsers();
+    public List<User> listUsers(String userName);
 }

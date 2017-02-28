@@ -144,5 +144,18 @@
         </tr>
     </table>
 </form:form>
+
+<c:if test="${!empty listUsers}">
+    <form action="/searchUser">
+        <div class="row">
+            <div class="col-md-2">Search users by name:</div>
+            <div class="col-md-2"><input type="text" name="searchName" id="searchName"
+                                         placeholder="type name here.."></div>
+            <div class="col-md-2"><input class="btn btn-xs" type='submit' value='Search'/></div>
+        </div>
+    </form>
+</c:if>
+
+
 </body>
 </html>

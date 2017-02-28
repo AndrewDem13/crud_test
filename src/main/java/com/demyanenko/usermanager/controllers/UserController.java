@@ -54,4 +54,11 @@ public class UserController {
         model.addAttribute("user", this.userService.getUserById(id));
         return "userdata";
     }
+
+    @RequestMapping("searchUser")
+    public String searchUser(@ModelAttribute("searchName") String searchName, Model model) {
+        model.addAttribute("user", new User());
+        model.addAttribute("listUsers", this.userService.listUsers(searchName));
+        return "users";
+    }
 }
