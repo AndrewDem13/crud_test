@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false"%>
 <html>
 <head>
@@ -36,6 +37,9 @@
     </style>
 </head>
 <body>
+
+<a href="<c:url value='/users'/>">Back to Users</a>
+
 <h1>User details</h1>
 
 <table class="tg">
@@ -54,5 +58,6 @@
         <td>${user.createdDate.toString()}</td>
     </tr>
 </table>
+
 </body>
 </html>
