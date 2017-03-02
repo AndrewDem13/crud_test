@@ -38,9 +38,11 @@
 <body>
 <div>
     <h1>User Manager</h1>
+
     <div class="button">
         <a href="/users">ENTER</a>
     </div>
+
     <br/>
     <h3 style="text-align: center; margin-top: 7%">by Andrey Demyanenko</h3>
 </div>

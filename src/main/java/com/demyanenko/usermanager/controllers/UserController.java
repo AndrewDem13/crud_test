@@ -1,6 +1,5 @@
 package com.demyanenko.usermanager.controllers;
 
-
 import com.demyanenko.usermanager.entities.User;
 import com.demyanenko.usermanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,10 +68,22 @@ public class UserController {
     }
 
     @RequestMapping(value = "/edit/{id}")
-    public String editUser(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", this.userService.getUserById(id));
-        model.addAttribute("listUsers", this.userService.listUsers());
-        return "users";
+    public ModelAndView editUser(@PathVariable("id") int id) {
+        ModelAndView modelAndView = new ModelAndView("users");
+
+        List<User> users = userService.listUsers();
+        PagedListHolder<User> pagedListHolder = new PagedListHolder<User>(users);
+        pagedListHolder.setPageSize(pageSize);
+        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
+
+        User user = this.userService.getUserById(id);
+        modelAndView.addObject("user", user);
+
+        modelAndView.addObject("page", 0);
+
+        pagedListHolder.setPage(0);
+        modelAndView.addObject("listUsers", pagedListHolder.getPageList());
+        return modelAndView;
     }
 
     @RequestMapping(value = "userdata/{id}")

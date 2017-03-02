@@ -4,12 +4,44 @@
 <html>
 <head>
     <title>Search Results</title>
-
     <style type="text/css">
+        body {
+            margin: 0px;
+            background: linear-gradient(whitesmoke, darkgray);
+        }
+        div {
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            font-size: 80px;
+            font-weight: bold;
+            -webkit-margin-before: 10%;
+            -webkit-margin-after: 3%;
+        }
+        .button {
+            text-align: center;
+            margin-top: 3%;
+        }
+
+        #back_btn {
+            font-size: 30px;
+            color: white;
+            background-color: darkcyan;
+            box-shadow: 5px 5px darkslategrey;
+            padding: 15px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+        #back_btn:hover {
+            background-color: lightgreen;
+        }
         .tg {
             border-collapse: collapse;
             border-spacing: 0;
             border-color: #ccc;
+            width: 460px;
+            margin: auto;
         }
 
         .tg td {
@@ -39,39 +71,39 @@
             color: #333;
             background-color: #f0f0f0;
         }
-
-        .tg .tg-4eph {
-            background-color: #f9f9f9
-        }
     </style>
 </head>
 <body>
-<a href="<c:url value='/users'/>">Back to Users</a>
+<div>
+    <h1>Search results</h1>
 
-<c:if test="${!empty listUsers}">
-    <h1>Users List</h1>
-    <table class="tg">
-        <tr>
-            <th width="30">ID</th>
-            <th width="120">Name</th>
-            <th width="50">Age</th>
-            <th width="50">Admin</th>
-            <th width="160">Created </th>
-        </tr>
-        <c:forEach items="${listUsers}" var="user">
+    <c:if test="${!empty listUsers}">
+        <table class="tg">
             <tr>
-                <td>${user.id}</td>
-                <td style="text-align:left; padding-left: 5px"><a href="/userdata/${user.id}" target="_blank">${user.name}</a></td>
-                <td>${user.age}</td>
-                <td>${user.admin}</td>
-                <td>${user.createdDate.toString()}</td>
+                <th width="30">ID</th>
+                <th width="120">Name</th>
+                <th width="50">Age</th>
+                <th width="50">Admin</th>
+                <th width="160">Created </th>
             </tr>
-        </c:forEach>
-    </table>
-</c:if>
-<c:if test="${empty listUsers}">
-    <h2>No matching results...</h2>
-</c:if>
+            <c:forEach items="${listUsers}" var="user">
+                <tr>
+                    <td>${user.id}</td>
+                    <td style="text-align:left; padding-left: 5px"><a href="/userdata/${user.id}">${user.name}</a></td>
+                    <td>${user.age}</td>
+                    <td>${user.admin}</td>
+                    <td>${user.createdDate.toString()}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+    <c:if test="${empty listUsers}">
+        <h2>Sory, there aren't users with name ${searchName}</h2>
+    </c:if>
 
+    <div class="button">
+        <a href="<c:url value='/users'/>" id="back_btn">Back to Users</a>
+    </div>
+</div>
 </body>
 </html>
