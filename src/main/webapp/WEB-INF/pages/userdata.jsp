@@ -22,7 +22,6 @@
             text-align: center;
             margin-top: 3%;
         }
-
         a {
             font-size: 30px;
             color: white;
@@ -42,7 +41,6 @@
             width: 460px;
             margin: auto;
         }
-
         .tg td {
             font-family: Arial, sans-serif;
             font-size: 14px;
@@ -56,7 +54,6 @@
             color: #333;
             background-color: #fff;
         }
-
         .tg th {
             font-family: Arial, sans-serif;
             font-size: 14px;

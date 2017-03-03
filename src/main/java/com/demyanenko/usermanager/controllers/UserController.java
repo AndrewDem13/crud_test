@@ -15,10 +15,10 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    UserService userService;
-    int pageSize = 5;
+    private UserService userService;
+    private int pageSize = 5;
 
-    @Autowired(required = true)
+    @Autowired
     @Qualifier(value = "userService")
     public void setBookService(UserService userService) {
         this.userService = userService;
@@ -38,7 +38,7 @@ public class UserController {
 
         modelAndView.addObject("page", page);
 
-        if(page == null || page < 1 || page > pagedListHolder.getPageCount()){
+        if(page < 1 || page > pagedListHolder.getPageCount()){
             pagedListHolder.setPage(0);
             modelAndView.addObject("listUsers", pagedListHolder.getPageList());
         }
